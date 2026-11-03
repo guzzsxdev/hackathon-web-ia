@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MedLembra – Lembrete de Medicamentos</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topo">
+    <div>
+      <h1>💊 MedLembra</h1>
+      <p class="sub">Seu lembrete de medicamentos, simples e acessível</p>
+    </div>
+    <div class="ferramentas" role="group" aria-label="Opções de acessibilidade">
+      <button id="btnMenos" type="button" aria-label="Diminuir letras">A−</button>
+      <button id="btnMais" type="button" aria-label="Aumentar letras">A+</button>
+      <button id="btnContraste" type="button" aria-pressed="false">Alto contraste</button>
+      <button id="btnVoz" type="button" aria-pressed="true">🔊 Voz: ligada</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="relogio" aria-live="polite">
+      <div id="hora" class="hora">--:--:--</div>
+      <div id="proxima" class="proxima">Nenhum medicamento cadastrado.</div>
+    </section>
+
+    <section class="cartao">
+      <h2>Adicionar medicamento</h2>
+      <form id="formMed">
+        <label for="nome">Nome do medicamento</label>
+        <input id="nome" type="text" placeholder="Ex.: Losartana" required maxlength="40">
+
+        <label for="dose">Dose</label>
+        <input id="dose" type="text" placeholder="Ex.: 1 comprimido de 50 mg" required maxlength="40">
+
+        <label for="horario">Horário</label>
+        <input id="horario" type="time" required>
+
+        <button class="principal" type="submit">+ Adicionar lembrete</button>
+      </form>
+    </section>
+
+    <section class="cartao">
+      <div class="linha-titulo">
+        <h2>Meus lembretes de hoje</h2>
+        <span id="progresso" class="progresso">0 de 0 tomados</span>
+      </div>
+      <ul id="lista" class="lista"></ul>
+      <p id="vazio" class="vazio">Adicione o primeiro medicamento acima.</p>
+      <button id="btnLimpar" class="perigo" type="button">Reiniciar o dia</button>
+    </section>
+  </main>
+
+  <div id="alerta" class="alerta" role="alertdialog" aria-modal="true" aria-labelledby="alertaTitulo" hidden>
+    <div class="alerta-caixa">
+      <h2 id="alertaTitulo">⏰ Hora do remédio!</h2>
+      <p id="alertaTexto"></p>
+      <button id="alertaTomei" class="principal" type="button">✔ Já tomei</button>
+      <button id="alertaDepois" type="button">Lembrar em 5 minutos</button>
+    </div>
+  </div>
+
+  <footer>Projeto Hackathon Web com IA – desenvolvido com apoio de IA generativa no VS Code</footer>
+  <script src="app.js"></script>
+</body>
+</html>
